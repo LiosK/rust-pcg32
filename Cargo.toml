@@ -1,0 +1,16 @@
+[package]
+name = "pcg32"
+version = "0.1.0"
+authors = ["LiosK <contact@mail.liosk.net>"]
+license = "CC0-1.0"
+edition = "2021"
+description = "No-frills PCG32 random number generator implementation"
+repository = "https://github.com/LiosK/rust-pcg32"
+keywords = ["random", "rng", "pcg"]
+categories = ["algorithms", "no-std"]
+
+[dependencies]
+
+[dev-dependencies]
+rand_core = { version = "0.6.4", default-features = false }
+rand_pcg  = { version = "0.3.1", default-features = false }
