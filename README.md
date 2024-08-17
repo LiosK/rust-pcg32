@@ -10,8 +10,8 @@ It implements the [PCG32 random number generator] (and really only that).
 ```rust
 let mut g = pcg32::Pcg32::new(0xff30_6525_39eb_eaa9, 0x315b_fae4_8ade_2146);
 
-assert_eq!(g.gen(), 0xf986_95e1);
-assert_eq!(g.gen(), 0x7e39_20e2);
+assert_eq!(g.generate(), 0xf986_95e1);
+assert_eq!(g.generate(), 0x7e39_20e2);
 ```
 
 This crate is `no_std` compatible.

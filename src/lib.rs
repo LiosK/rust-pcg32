@@ -7,8 +7,8 @@
 //! ```rust
 //! let mut g = pcg32::Pcg32::new(0xff30_6525_39eb_eaa9, 0x315b_fae4_8ade_2146);
 //!
-//! assert_eq!(g.gen(), 0xf986_95e1);
-//! assert_eq!(g.gen(), 0x7e39_20e2);
+//! assert_eq!(g.generate(), 0xf986_95e1);
+//! assert_eq!(g.generate(), 0x7e39_20e2);
 //! ```
 //!
 //! This crate is `no_std` compatible.
@@ -48,11 +48,18 @@ impl Pcg32 {
 
     /// Generates a pseudorandom uniformly distributed 32-bit unsigned integer.
     #[inline]
-    pub fn gen(&mut self) -> u32 {
+    pub fn generate(&mut self) -> u32 {
         let s = self.state;
         self.state = s.wrapping_mul(MUL).wrapping_add(self.inc);
         let xorshifted = (((s >> 18) ^ s) >> 27) as u32;
         xorshifted.rotate_right((s >> 59) as u32)
+    }
+
+    /// Alias to `generate` for backward compatibility.
+    #[doc(hidden)]
+    #[inline]
+    pub fn r#gen(&mut self) -> u32 {
+        self.generate()
     }
 }
 
@@ -225,7 +232,7 @@ mod tests {
 
         for (mut rng, expected_sequence) in cases {
             for expected in expected_sequence {
-                assert_eq!(rng.gen(), expected);
+                assert_eq!(rng.generate(), expected);
             }
         }
     }
@@ -260,7 +267,7 @@ mod tests {
             let mut ours = Pcg32::new(initstate, initseq);
             let mut theirs = rand_pcg::Pcg32::new(initstate, initseq);
             for _ in 0..0x1_0000 {
-                assert_eq!(ours.gen(), theirs.next_u32());
+                assert_eq!(ours.generate(), theirs.next_u32());
             }
         }
     }

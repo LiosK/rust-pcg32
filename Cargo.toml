@@ -1,6 +1,6 @@
 [package]
 name = "pcg32"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["LiosK <contact@mail.liosk.net>"]
 license = "CC0-1.0"
 edition = "2021"
