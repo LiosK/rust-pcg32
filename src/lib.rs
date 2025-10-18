@@ -48,7 +48,7 @@ impl Pcg32 {
 
     /// Generates a pseudorandom uniformly distributed 32-bit unsigned integer.
     #[inline]
-    pub fn generate(&mut self) -> u32 {
+    pub const fn generate(&mut self) -> u32 {
         let s = self.state;
         self.state = s.wrapping_mul(MUL).wrapping_add(self.inc);
         let xorshifted = (((s >> 18) ^ s) >> 27) as u32;
