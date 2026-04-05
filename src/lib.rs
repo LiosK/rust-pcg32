@@ -57,7 +57,7 @@ impl Pcg32 {
 
     /// Alias to `generate` for backward compatibility.
     #[doc(hidden)]
-    #[inline]
+    #[deprecated(since = "0.1.4", note = "use `generate()` instead")]
     pub fn r#gen(&mut self) -> u32 {
         self.generate()
     }
