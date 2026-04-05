@@ -34,7 +34,6 @@ impl Pcg32 {
     /// official library for further details.
     ///
     /// [`pcg32_srandom_r`]: https://www.pcg-random.org/using-pcg-c-basic.html#pcg32-srandom-r-rngptr-initstate-initseq
-    #[inline]
     pub const fn new(initstate: u64, initseq: u64) -> Self {
         let inc = (initseq << 1) | 1;
         Self {
@@ -64,7 +63,6 @@ impl Pcg32 {
 }
 
 impl Default for Pcg32 {
-    #[inline]
     fn default() -> Self {
         // adapted from `PCG32_INITIALIZER` of the official library
         Self {
