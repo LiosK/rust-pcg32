@@ -240,7 +240,7 @@ mod tests {
     /// [rand_pcg]: https://crates.io/crates/rand_pcg
     #[test]
     fn compare_with_rand_pcg_crate() {
-        use rand_pcg::rand_core::RngCore as _;
+        use rand_pcg::rand_core::Rng as _;
 
         let seeds = [
             (0xf930cb32d6de10de, 0x9235e8751c5b6654),
